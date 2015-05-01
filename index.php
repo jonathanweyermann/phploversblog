@@ -14,6 +14,11 @@
 	
 	//Run Query
 	$categories = $db->select($query);
+	
+	//Create Query / Run Author Query
+	$query = "SELECT * FROM authors";
+	$authors = $db->select($query);
+	
 ?>
 <?php if ($posts) : ?>
 	<?php while ($row = $posts->fetch_assoc()) : ?>

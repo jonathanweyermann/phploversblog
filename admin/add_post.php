@@ -32,6 +32,9 @@
 	
 	//Run Query
 	$categories = $db->select($query);
+	
+	$query = "SELECT * FROM authors";
+	$authors = $db->select($query);
 ?>
 
 <form role="form" method="post" action="add_post.php">
@@ -59,7 +62,17 @@
 	</div>
 	<div class="form-group">
 		<label>Author</label>
-		<input name="author" type="text" class="form-control" placeholder="Enter Author Name">
+		<select name="author" class="form-control">
+			<?php while($row = $authors->fetch_assoc()) : ?>
+			<?php if ($row['id'] == $post['author']){
+				$selected = 'selected';
+			} else {
+				$selected = '';
+			}
+			?>
+			<option <?php echo $selected; ?> value="<?php echo $row["id"]; ?>"><?php echo $row['name'] ?></option>
+			<?php endwhile; ?>
+		</select>
 	</div>
 	<div class="form-group">
 		<label>Tags</label>

@@ -15,6 +15,10 @@
 	
 	//Run Query
 	$categories = $db->select($query);
+	
+	//Create Query / Run Author Query
+	$query = "SELECT * FROM authors";
+	$authors = $db->select($query);
 ?>
  <div class="blog-post">
 	<h2 class="blog-post-title"><?php echo $post['title'] ; ?></h2>
